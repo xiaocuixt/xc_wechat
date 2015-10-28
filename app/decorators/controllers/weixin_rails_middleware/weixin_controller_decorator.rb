@@ -11,7 +11,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
   private
 
     def response_text_message(options={})
-      reply_text_message("小崔账号欢迎您: #{@keyword}")
+      reply_text_message("ruby社区欢迎你，猛戳下面获取更多干活！http://2dab8c0d.ngrok.io/")
     end
 
     # <Location_X>23.134521</Location_X>

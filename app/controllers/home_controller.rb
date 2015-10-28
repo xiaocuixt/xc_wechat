@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   def index
     @followers = $client.followers
     @response = $client.menu
+    @user_info = $client.user(1)
   end
 
   private
