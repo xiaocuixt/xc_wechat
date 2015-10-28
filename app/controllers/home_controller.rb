@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   before_action :set_client
   def index
     @followers = $client.followers
-    @rule = $client.mass_autoreply_rules
+    @response = $client.menu
   end
 
   private
