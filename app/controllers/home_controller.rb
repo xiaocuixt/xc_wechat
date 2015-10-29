@@ -1,13 +1,20 @@
 class HomeController < ApplicationController
-  before_action :set_client
+  before_action :authorize_current_subscriber, only: :index
+
   def index
-    @user_info = $client.user(params[:openid]).to_json
-    @subscriber = Subscriber.find_by(openid: params[:openid])
   end
 
-  private
-  def set_client
-    $client ||= WeixinAuthorize::Client.new(ENV["APPID"], ENV["APPSECRET"])
-    p $client.is_valid?
+  def auth
+    subscriber = Subscriber.where(openid: params[:openid]).first
+    if subscriber.present?
+      session[:openid] = subscriber.openid
+      redirect_to index_path
+    else
+      return redirect_to error_path
+    end
+  end
+
+  def error
+    p ENV['HOST']+'auth'
   end
 end

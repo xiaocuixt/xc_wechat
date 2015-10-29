@@ -1,28 +1,20 @@
 <button>分享</button>
-<%= params[:openid] %>
-<%= @user_info %>
-
-
-<p>用户信息</p>
-<table>
-  <tr>
-    <th>性别</th>
-    <td><%= @subscriber.sex %></td>
-  </tr>
-  <tr>
-    <th>名称</th>
-    <td><%= @subscriber.nickname %></td>
-  </tr>
-  <tr>
-    <th>地区</th>
-    <td><%= @subscriber.country %><%= @subscriber.province %><%= @subscriber.city %></td>
-  </tr>
-  <tr>
-    <th>头像</th>
-    <td><%= image_tag @subscriber.headimgurl %></td>
-  </tr>
-  <tr>
-    <th>备注</th>
-    <td><%= @subscriber.remark %></td>
-  </tr>
-</table>
+<%= link_to "用户信息", subscribers_path %>
+<%= content_for :weixin_api do %>
+  <!-- 转发朋友提示信息 -->
+  <script type="text/javascript">
+    wx.ready(function () {
+      wx.onMenuShareAppMessage({
+        title: "哈哈哈哈哈哈",
+        desc: "",
+        link: "",
+        imgUrl: ""
+      });
+    });
+    wx.onMenuShareTimeline({
+      title: "xxxxx",
+      link: "",
+      imgUrl: "",
+    });
+  </script>
+<% end %>

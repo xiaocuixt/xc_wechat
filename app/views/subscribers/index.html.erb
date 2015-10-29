@@ -1,0 +1,23 @@
+<p>用户信息</p>
+<table>
+  <tr>
+    <th>性别</th>
+    <td><%= current_subscriber.sex %></td>
+  </tr>
+  <tr>
+    <th>名称</th>
+    <td><%= current_subscriber.nickname %></td>
+  </tr>
+  <tr>
+    <th>地区</th>
+    <td><%= current_subscriber.country %><%= current_subscriber.province %><%= current_subscriber.city %></td>
+  </tr>
+  <tr>
+    <th>头像</th>
+    <td><%= image_tag current_subscriber.headimgurl %></td>
+  </tr>
+  <tr>
+    <th>备注</th>
+    <td><%= current_subscriber.remark %></td>
+  </tr>
+</table>

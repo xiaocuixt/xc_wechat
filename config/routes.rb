@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  get '/index', to: "home#index"
+  get '/index', to: "home#index", as: :index
+  get '/error', to: "home#error", as: :error
+  get '/auth', to: "home#auth", as: :auth
   mount WeixinRailsMiddleware::Engine, at: "/"
+  resources :subscribers
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

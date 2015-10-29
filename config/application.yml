@@ -1,7 +1,7 @@
 defaults: &defaults
   APPID: "wx345ff6c203aba807"
   APPSECRET: "4ec49b85222209e720ccfcb2c789a088"
-  HOST: "https://xiaocuixt.localtunnel.me/"
+  HOST: "https://xiaocuixt.localtunnel.me"
 
 development:
   <<: *defaults

@@ -11,7 +11,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
   private
 
     def response_text_message(options={})
-      reply_text_message(ENV['HOST']+'index?openid='+"#{@weixin_message.FromUserName}")
+      reply_text_message(ENV['HOST']+'/auth?openid='+ @weixin_message.FromUserName)
     end
 
     # <Location_X>23.134521</Location_X>
