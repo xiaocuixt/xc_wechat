@@ -11,7 +11,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
   private
 
     def response_text_message(options={})
-      reply_text_message("ruby社区欢迎你，猛戳下面获取更多干活！http://2dab8c0d.ngrok.io/")
+      reply_text_message("ruby社区欢迎你，猛戳下面获取更多干活！#{@weixin_message.FromUserName}")
     end
 
     # <Location_X>23.134521</Location_X>
@@ -96,7 +96,12 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     # 点击菜单拉取消息时的事件推送
     def handle_click_event
-      reply_text_message("你点击了: #{@keyword}")
+      case @keyword
+      when '我的信息2'
+        reply_text_message('#{root_path(openid: @weixin_message.FromUserName)}')
+      else
+        reply_text_message("你点击了: #{@keyword}")
+      end
     end
 
     # 点击菜单跳转链接时的事件推送

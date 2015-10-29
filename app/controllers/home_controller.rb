@@ -8,7 +8,7 @@ class HomeController < ApplicationController
 
   private
   def set_client
-    $client ||= WeixinAuthorize::Client.new("wx345ff6c203aba807", "4ec49b85222209e720ccfcb2c789a088")
+    $client ||= WeixinAuthorize::Client.new(ENV["APPID"], ENV["APPSECRET"])
     p "xxxxxxxxxx"
     p $client.is_valid?
   end
