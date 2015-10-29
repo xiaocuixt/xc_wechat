@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028013501) do
+ActiveRecord::Schema.define(version: 20151029075735) do
 
   create_table "diymenus", force: :cascade do |t|
     t.integer  "parent_id",  limit: 4
@@ -26,5 +26,18 @@ ActiveRecord::Schema.define(version: 20151028013501) do
 
   add_index "diymenus", ["key"], name: "index_diymenus_on_key", using: :btree
   add_index "diymenus", ["parent_id"], name: "index_diymenus_on_parent_id", using: :btree
+
+  create_table "subscribers", force: :cascade do |t|
+    t.string   "openid",     limit: 255
+    t.integer  "sex",        limit: 4
+    t.string   "nickname",   limit: 255
+    t.string   "city",       limit: 255
+    t.string   "province",   limit: 255
+    t.string   "country",    limit: 255
+    t.string   "headimgurl", limit: 255
+    t.string   "remark",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
 end

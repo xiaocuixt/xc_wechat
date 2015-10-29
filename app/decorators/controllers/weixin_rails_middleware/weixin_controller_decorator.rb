@@ -11,7 +11,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
   private
 
     def response_text_message(options={})
-      reply_text_message("ruby社区欢迎你，猛戳下面获取更多干活！#{@weixin_message.FromUserName}")
+      reply_text_message(ENV['HOST']+'index?openid='+"#{@weixin_message.FromUserName}")
     end
 
     # <Location_X>23.134521</Location_X>
@@ -70,6 +70,10 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     # 关注公众账号
     def handle_subscribe_event
+      #关注时创建用户subscriber用户
+      subscriber = Subscriber.new
+      subscriber.update_subscriber(@weixin_message.FromUserName)
+
       if @keyword.present?
         # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
         return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
