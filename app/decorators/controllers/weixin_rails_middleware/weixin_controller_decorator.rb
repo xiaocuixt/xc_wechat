@@ -11,7 +11,8 @@ WeixinRailsMiddleware::WeixinController.class_eval do
   private
 
     def response_text_message(options={})
-      reply_text_message(ENV['HOST']+'/auth?openid='+ @weixin_message.FromUserName)
+      subscriber = @weixin_message.FromUserName
+      process_text_request(@keyword, subscriber)
     end
 
     # <Location_X>23.134521</Location_X>
@@ -101,10 +102,8 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     # 点击菜单拉取消息时的事件推送
     def handle_click_event
       case @keyword
-      when '我的信息2'
-        reply_text_message('#{root_path(openid: @weixin_message.FromUserName)}')
-      else
-        reply_text_message("你点击了: #{@keyword}")
+      when "我的信息"
+        reply_text_message("这是我的信息页面")
       end
     end
 
@@ -134,6 +133,19 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     # </xml>
     def handle_masssendjobfinish_event
       Rails.logger.info("回调事件处理")
+    end
+    #微信自带的generate_article等帮助方法，https://github.com/lanrion/weixin_rails_middleware/wiki/Generate-message-helpers
+    #响应上传图文消息
+    def process_text_request text, subscriber
+      messages = Message.where(keyword: text)
+      articles = []
+      if messages.present?
+        messages.each do |message|
+          article = generate_article(message.title, message.summary, message.image, message.url)
+          articles << article
+        end
+        reply_news_message(articles)
+      end
     end
 
 end

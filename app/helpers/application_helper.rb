@@ -8,5 +8,4 @@ module ApplicationHelper
   def haha
     "xxxxx"
   end
-
 end

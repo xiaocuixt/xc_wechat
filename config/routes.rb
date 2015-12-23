@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   get '/index', to: "home#index", as: :index
   get '/error', to: "home#error", as: :error
   get '/auth', to: "home#auth", as: :auth
