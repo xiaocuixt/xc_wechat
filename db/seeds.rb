@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Diymenu.delete_all
-Diymenu.create(id: 1, name: '烩员', url: 'http://xiaocuixt.localtunnel.me/', is_show: true, sort: 0)
+Diymenu.create(id: 1, name: '烩员', url: 'http://baidu.com', is_show: true, sort: 0)
 Diymenu.create(id: 2, name: '活动', url: 'http://baidu.com', is_show: true, sort: 1)
 Diymenu.create(id: 3, name: '我们', url: 'http://baidu.com', is_show: true, sort:2)
-Diymenu.create(id: 4, parent_id: 1, name: '测试页面2', is_show: true, sort:0)
-Diymenu.create(id: 5, parent_id: 1, name: '我的信息', key: "我的信息", is_show: true, sort:1)
+Diymenu.create(id: 4, parent_id: 1, name: '测试页面', url: 'http://baidu.com', key: "测试页面", is_show: true, sort:0)
+Diymenu.create(id: 5, parent_id: 1, name: '我的信息', url: 'http://baidu.com', key: "我的信息", is_show: true, sort:1)
 Diymenu.create(id: 6, parent_id: 1, name: '我的活动', url: 'http://baidu.com', is_show: true, sort:2)

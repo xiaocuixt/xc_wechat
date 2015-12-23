@@ -33,6 +33,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       @media_id = @weixin_message.MediaId # 可以调用多媒体文件下载接口拉取数据。
       @pic_url  = @weixin_message.PicUrl  # 也可以直接通过此链接下载图片, 建议使用carrierwave.
       reply_image_message(generate_image(@media_id))
+      reply_text_message(@weixin_message.PicUrl)
     end
 
     # <Title><![CDATA[公众平台官网链接]]></Title>
@@ -96,14 +97,15 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       @lat = @weixin_message.Latitude
       @lgt = @weixin_message.Longitude
       @precision = @weixin_message.Precision
-      reply_text_message("Your Location: #{@lat}, #{@lgt}, #{@precision}")
+      reply_text_message("您的经纬度信息: #{@lat}, #{@lgt}, #{@precision}")
     end
 
     # 点击菜单拉取消息时的事件推送
     def handle_click_event
       case @keyword
       when "我的信息"
-        reply_text_message("这是我的信息页面")
+        articles = [generate_article("我的个人信息", "", "http://pic.58pic.com/58pic/11/15/86/96f58PICTZN.jpg", "")]
+        reply_news_message(articles)
       end
     end
 
