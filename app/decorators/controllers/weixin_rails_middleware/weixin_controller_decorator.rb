@@ -32,8 +32,10 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     def response_image_message(options={})
       @media_id = @weixin_message.MediaId # 可以调用多媒体文件下载接口拉取数据。
       @pic_url  = @weixin_message.PicUrl  # 也可以直接通过此链接下载图片, 建议使用carrierwave.
-      reply_image_message(generate_image(@media_id))
-      reply_text_message(@weixin_message.PicUrl)
+      # reply_image_message(generate_image(@media_id))
+      # reply_text_message(@weixin_message.PicUrl)
+      Album.generate_avatar(@weixin_message.PicUrl)
+      reply_text_message("图片给上传成功,该图片将存到您的相册集里！")
     end
 
     # <Title><![CDATA[公众平台官网链接]]></Title>

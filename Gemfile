@@ -48,3 +48,6 @@ end
 gem 'weixin_rails_middleware'
 gem 'weixin_authorize'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
