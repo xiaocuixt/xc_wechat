@@ -14,7 +14,7 @@ module ApplicationHelper
     if posts.nil?
       posts = Post.all.to_json
       $redis.set("posts", posts)
-      $redis.expires("posts", 5.hour.to_i)
+      $redis.expires("posts", 5.minute.to_i)
     end
     @posts = JSON.load posts
   end
