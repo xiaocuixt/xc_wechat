@@ -51,3 +51,9 @@ gem 'weixin_authorize'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'redis', '~>3.2'
+gem 'redis-store', '>= 1.1'
+gem 'redis-rails'
+
+#统计页面访问速度
+gem 'rack-mini-profiler'

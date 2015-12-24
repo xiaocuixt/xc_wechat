@@ -136,7 +136,9 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     # <ErrorCount>5</ErrorCount>
     # </xml>
     def handle_masssendjobfinish_event
-      Rails.logger.info("回调事件处理")
+      reply_text_message(@weixin_message)
+      reply_text_message(Message.generate_message(@weixin_message))
+      #Rails.logger.info("回调事件处理")
     end
     #微信自带的generate_article等帮助方法，https://github.com/lanrion/weixin_rails_middleware/wiki/Generate-message-helpers
     #响应上传图文消息

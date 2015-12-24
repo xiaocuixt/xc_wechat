@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   resources :albums
   resources :messages
   get '/index', to: "home#index", as: :index

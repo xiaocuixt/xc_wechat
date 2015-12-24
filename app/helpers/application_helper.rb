@@ -8,4 +8,14 @@ module ApplicationHelper
   def haha
     "xxxxx"
   end
+
+  def fetch_posts
+    posts = $redis.get("posts")
+    if posts.nil?
+      posts = Post.all.to_json
+      $redis.set("posts", posts)
+      $redis.expires("posts", 5.hour.to_i)
+    end
+    @posts = JSON.load posts
+  end
 end

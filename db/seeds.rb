@@ -13,3 +13,8 @@ Diymenu.create(id: 3, name: '我们', url: 'http://baidu.com', is_show: true, so
 Diymenu.create(id: 4, parent_id: 1, name: '测试页面', url: 'http://baidu.com', key: "测试页面", is_show: true, sort:0)
 Diymenu.create(id: 5, parent_id: 1, name: '我的信息', url: 'http://baidu.com', key: "我的信息", is_show: true, sort:1)
 Diymenu.create(id: 6, parent_id: 1, name: '我的活动', url: 'http://baidu.com', is_show: true, sort:2)
+
+Post.delete_all
+(1..10000).each do |i|
+  Post.create(title: "我的第#{i}个测试")
+end
